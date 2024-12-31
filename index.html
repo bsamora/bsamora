@@ -31,8 +31,8 @@
         
         .main-image {
             width: 100%;
-            height: 300px;
-            background-color: #90EE90;  /* Light green tint */
+            height: auto; /* Changed from fixed height to maintain aspect ratio */
+            object-fit: cover; /* This helps with image scaling */
             margin: 20px 0;
         }
         
@@ -53,8 +53,8 @@
             YOUR SITE NAME HERE
         </div>
         
-        <div class="main-image">
-<img src="images/J5.1.jpg" class="main-image">
+        <div class="image-container">
+            <img src="images/J5.1.jpg" class="main-image">
         </div>
         
         <div class="details">
