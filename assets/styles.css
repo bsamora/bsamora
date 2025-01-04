@@ -31,7 +31,17 @@ header nav ul {
     display: flex;
     gap: 20px;
 }
-/*main image*/ 
+header nav ul li a {
+    text-decoration: none;
+    font-size: 18px;
+    color: #000000;
+    font-weight:bold;
+    transition: color 0.3s ease;
+}
+header nav ul li a:hover {
+    color: #3c6e71;          
+}
+    /*main image*/ 
 .main-image {
     max-width: 800px;
     width: 100%;
