@@ -38,3 +38,34 @@
             margin-top: 20px;
         }
     </style>
+
+/*Header and Navigation*/
+/* Center the title */
+header h1 {
+    text-align: center;
+    font-size: 36px;
+    margin: 10px 0;
+}
+
+/* Style the navigation bar */
+header nav ul {
+    list-style: none; /* Remove bullet points */
+    padding: 0;
+    display: flex; /* Make the links line up horizontally */
+    justify-content: center; /* Center the navigation menu */
+    gap: 20px; /* Add space between links */
+    margin: 0;
+}
+
+/* Style the links */
+header nav ul li a {
+    text-decoration: none; /* Remove underline */
+    font-size: 18px;
+    color: #575d90; /* Adjust color as needed */
+    font-weight: bold;
+}
+
+header nav ul li a:hover {
+    color: #3c6e71; /* Change color on hover */
+}
+
