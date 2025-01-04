@@ -2,11 +2,11 @@
 .header {
     position: relative;
     padding: 10px 20px;
-    text-align: center; /* Add this */
-    height: 200px; /* Increased slightly to accommodate stacked layout */
+    text-align: center;
+    height: 200px;
 }
 
-/* Keep your original title container styling */
+/* Title container styling */
 .title-container {
     position: absolute;
     left: 50%;
@@ -14,39 +14,44 @@
     z-index: 1000;
 }
 
-/* Adjust menu positioning */
+/* Menu positioning */
 .menu {
     position: absolute;
-    left: 50%; /* Change from right positioning */
-    transform: translateX(-50%); /* Center horizontally */
-    top: 150px; /* Position below title image */
+    left: 50%;
+    transform: translateX(-50%);
+    top: 150px;
     z-index: 1000;
+    width: 100%; /* Add this to ensure the nav inside takes full width */
 }
 
-/* Keep your existing menu styles */
-header nav ul {
+/* Menu list styling */
+.menu nav ul {    /* Changed from header nav ul to be more specific to your class */
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
     gap: 20px;
+    justify-content: center; /* Add this to center the flex items */
 }
-header nav ul li a {
+
+.menu nav ul li a {    /* Changed from header nav ul li a to match your structure */
     text-decoration: none;
     font-size: 18px;
     color: #000000;
-    font-weight:bold;
+    font-weight: bold;
     transition: color 0.3s ease;
 }
-header nav ul li a:hover {
+
+.menu nav ul li a:hover {
     color: #3c6e71;          
 }
-    /*main image*/ 
+
+/* Main image */
 .main-image {
     max-width: 800px;
     width: 100%;
     height: auto; 
     object-fit: cover;
-    margin: 20px auto
+    margin: 20px auto;   /* Fixed missing semicolon */
     display: block;
 }
