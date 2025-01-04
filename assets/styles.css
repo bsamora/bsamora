@@ -5,6 +5,13 @@ header h1 {
     font-size: 36px;
     margin: 10px 0;
 }
+.title-container {
+    display: flex; /* Use flexbox for easy centering */
+    justify-content: center; /* Horizontal centering */
+    align-items: center; /* Vertical centering */
+    height: 150px; /* Adjust as needed */
+    text-align: center; /* Fallback for older browsers */
+}
 .title-image {
     display: block; /* Makes centering easier */
     margin: 0 auto; /* Centers horizontally */
