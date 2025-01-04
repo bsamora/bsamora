@@ -5,18 +5,11 @@ header h1 {
     font-size: 36px;
     margin: 10px 0;
 }
-.title-container {
-    display: flex; /* Use flexbox for easy centering */
-    justify-content: center; /* Horizontal centering */
-    align-items: center; /* Vertical centering */
-    height: 150px; /* Adjust as needed */
-    text-align: center; /* Fallback for older browsers */
-}
-.title-image {
-    display: block; /* Makes centering easier */
-    margin: 0 auto; /* Centers horizontally */
-    width: 400px; /* Adjust as needed */
-    height: auto; /* Keeps aspect ratio */
+.title-container img{
+    display: block; /* Use flexbox for easy centering */
+    margin: 0 auto
+    width: 400px;
+    height: auto;
 }
 
 /* Style the navigation bar */
