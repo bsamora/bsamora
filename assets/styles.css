@@ -1,84 +1,81 @@
-/*Header and Navigation*/
-/* Center the title */
+/* Header and Navigation */
 .header {
     position: relative;
     padding: 10px 20px;
 }
-.title-container img{
-    display: block; /* Use flexbox for easy centering */
-    margin: 0 auto
-    width: 400px;
-    height: auto;
-    
+
+/* Center the title */
 .title-container {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
 }
 
+.title-container img {
+    display: block;
+    width: 400px;
+    height: auto;
+    margin: 0 auto; /* Centers the image */
+}
+
+/* Position the menu */
 .menu {
     position: absolute;
-    right: 20px; /* Adjust spacing */
+    right: 20px; /* Adjust spacing from the right edge */
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-50%); /* Center menu vertically */
 }
 
 /* Style the navigation bar */
 header nav ul {
     list-style: none; /* Remove bullet points */
     padding: 0;
-    display: flex; /* Make the links line up horizontally */
-    justify-content: center; /* Center the navigation menu */
-    gap: 20px; /* Add space between links */
     margin: 0;
+    display: flex; /* Align items horizontally */
+    gap: 20px; /* Add space between menu items */
 }
 
 /* Style the links */
 header nav ul li a {
     text-decoration: none; /* Remove underline */
     font-size: 18px;
-    color: #575d90; /* Adjust color as needed */
+    color: #575d90; /* Link color */
     font-weight: bold;
+    transition: color 0.3s ease; /* Smooth hover transition */
 }
 
 header nav ul li a:hover {
     color: #3c6e71; /* Change color on hover */
 }
 
-/* Page Body*/
- body {
-      background-color: #f5f5f5;
-      font-family: Arial, sans-serif;
-      margin: 40px;
-      padding: 0;
-  }
-  
-  .container {
-      max-width: 600px;
-      margin: 0 auto;
-      position: relative;
-  }
-  
-  .header {
-      text-align: left;
-      font-size: 14px;
-      margin-bottom: 40px;
-  }
-  
-  .main-image {
-      width: 100%;
-      height: auto; /* Changed from fixed height to maintain aspect ratio */
-      object-fit: cover; /* This helps with image scaling */
-      margin: 20px 0;
-  }
-  
-  .details {
-      font-size: 16px;
-      line-height: 1.5;
-      margin-top: 20px;
-  }
+/* Page Body */
+body {
+    background-color: #f5f5f5;
+    font-family: Arial, sans-serif;
+    margin: 40px;
+    padding: 0;
+}
 
-/*footer*/
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.main-image {
+    width: 100%;
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Helps with image scaling */
+    margin: 20px 0;
+}
+
+.details {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-top: 20px;
+}
+
+/* Footer */
 footer {
     text-align: center;
     padding: 10px;
