@@ -5,9 +5,11 @@ header h1 {
     font-size: 36px;
     margin: 10px 0;
 }
-image {
-    display:block;
-    margin: 0 auto
+.title-image {
+    display: block; /* Makes centering easier */
+    margin: 0 auto; /* Centers horizontally */
+    width: 400px; /* Adjust as needed */
+    height: auto; /* Keeps aspect ratio */
 }
 
 /* Style the navigation bar */
