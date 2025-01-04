@@ -1,3 +1,9 @@
+.page-container {
+    max-width: 1200px;
+    margin: 0 auto; /* Center the site horizontally */
+    padding: 0 20px; /* Add some side padding for spacing */
+}
+
 /* Header and Navigation */
 .header {
     position: relative;
