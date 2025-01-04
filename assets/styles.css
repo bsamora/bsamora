@@ -55,3 +55,10 @@
     margin: 20px auto;   /* Fixed missing semicolon */
     display: block;
 }
+/*footer*/
+footer {
+    position: relative;
+    padding: 10px 20px;
+    text-align: center;
+    height: 200px;
+}
