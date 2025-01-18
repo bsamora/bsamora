@@ -1,5 +1,4 @@
-    <style>
-        /* Variables for color palette */
+/* Variables for color palette */
         :root {
             --orange: #E77C08;
             --black: #110C0B;
@@ -108,4 +107,3 @@
                 margin-top: 1rem;
             }
         }
-    </style>
