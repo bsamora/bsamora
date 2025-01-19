@@ -34,10 +34,15 @@
 
         /* Header Styles */
         .site-header {
-          background-color: #B58A99;
-          padding: 1.5rem 0;
-          width: 100%;
+            grid-column: 1 / -1;
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 4rem;  /* This is your current spacing */
+            border-bottom: 2px solid var(--orange);
+            padding-bottom: 1rem;
         }
+
         
         .header-container {
           max-width: 1200px;
