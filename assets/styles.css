@@ -105,7 +105,7 @@
 /* Blog page specific styles */
 :root {
   --orange-primary: #E77C08;
-  --dark-bg: #110C0B;
+  --dark: #110C0B;
   --rust: #AA5527;
   --brown: #7A391B;
   --mauve: #B58A99;
@@ -117,13 +117,13 @@
   grid-template-columns: repeat(12, 1fr);
   gap: 1.5rem;
   padding: 2rem;
-  background-color: var(--dark-bg);
+  background-color: var(--mauve);
 }
 
 /* Editorial header style */
 .blog-header {
   grid-column: 1 / -1;
-  border: 2px solid var(--mauve);
+  border: 2px solid var(--dark);
   margin-bottom: 2rem;
   padding: 1.5rem;
   display: flex;
@@ -134,7 +134,7 @@
 .blog-header h1 {
   font-family: "Times New Roman", serif;
   font-size: 3.5rem;
-  color: var(--mauve);
+  color: var(--dark);
   margin: 0;
   line-height: 0.9;
 }
@@ -156,7 +156,7 @@
 
 /* Individual post card */
 .blog-post {
-  border: 2px solid var(--mauve);
+  border: 2px solid var(--dark);
   background-color: transparent;
   padding: 1.5rem;
   display: flex;
@@ -167,7 +167,7 @@
 /* Post title styling */
 .blog-post a {
   font-family: "Times New Roman", serif;
-  color: var(--mauve);
+  color: var(--dark);
   text-decoration: none;
   font-size: 1.5rem;
   line-height: 1.2;
@@ -182,7 +182,7 @@
 /* Post date styling */
 .blog-post-date {
   font-family: monospace;
-  color: var(--mauve);
+  color: var(--dark);
   font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -194,7 +194,7 @@
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
-  color: var(--mauve);
+  color: var(--dark);
   font-family: "Times New Roman", serif;
   font-style: italic;
 }
@@ -207,7 +207,7 @@
   right: 0.5rem;
   width: 1rem;
   height: 1rem;
-  border: 1px solid var(--mauve);
+  border: 1px solid var(--dark);
 }
 
 /* Responsive adjustments */
