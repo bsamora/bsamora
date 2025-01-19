@@ -34,13 +34,14 @@
 
         /* Header Styles */
         .site-header {
-            grid-column: 1 / -1;
-            display: flex;
-            justify-content: space-between;
-            align-items: start;
-            margin-bottom: 5rem; 
-            border-bottom: 2px solid var(--orange);
-            padding-bottom: 1rem;
+          background-color: #b58a99;
+          grid-column: 1 / -1;
+          display: flex;
+          justify-content: space-between;
+          align-items: start;
+          margin-bottom: 5rem; 
+          border-bottom: 2px solid var(--orange);
+          padding-bottom: 1rem;
         }
 
         
