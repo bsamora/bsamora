@@ -102,7 +102,112 @@
             display: block;
             border: 1px solid var(--mauve);
         }
+/* Blog page specific styles */
+:root {
+  --orange-primary: #E77C08;
+  --dark-bg: #110C0B;
+  --rust: #AA5527;
+  --brown: #7A391B;
+  --mauve: #B58A99;
+}
 
+/* Blog page container */
+.blog-container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 2rem;
+  padding: 2rem;
+  background-color: var(--dark-bg);
+  color: var(--mauve);
+}
+
+/* Zine-style header */
+.blog-header {
+  grid-column: 1 / -1;
+  transform: rotate(-2deg);
+  background-color: var(--rust);
+  padding: 2rem;
+  margin-bottom: 3rem;
+  box-shadow: 0.5rem 0.5rem 0 var(--orange-primary);
+}
+
+.blog-header h1 {
+  font-size: 4rem;
+  color: var(--dark-bg);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin: 0;
+  text-align: center;
+  font-family: "Courier New", monospace;
+}
+
+/* Blog post list container */
+.blog-posts {
+  grid-column: 2 / 12;
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 2rem;
+}
+
+/* Individual blog post item */
+.blog-post {
+  background-color: var(--brown);
+  padding: 1.5rem;
+  border: 2px solid var(--mauve);
+  transform: rotate(1deg);
+  transition: transform 0.3s ease;
+}
+
+.blog-post:nth-child(2n) {
+  transform: rotate(-1deg);
+}
+
+.blog-post:hover {
+  transform: rotate(0) scale(1.02);
+}
+
+/* Blog post link styling */
+.blog-post a {
+  color: var(--orange-primary);
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.blog-post a:hover {
+  color: var(--mauve);
+  text-decoration: underline;
+}
+
+/* Blog post date styling */
+.blog-post-date {
+  color: var(--mauve);
+  font-family: "Courier New", monospace;
+  font-size: 0.9rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .blog-container {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .blog-posts {
+    grid-column: 1 / -1;
+  }
+
+  .blog-header h1 {
+    font-size: 2.5rem;
+  }
+
+  .blog-post {
+    padding: 1rem;
+  }
+}
         /* Details styles */
         .details {
             grid-column: 9 / -1;
