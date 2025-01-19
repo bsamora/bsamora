@@ -140,7 +140,6 @@
 }
 
 .blog-header::after {
-  content: "★";
   color: var(--mauve);
   font-size: 1.5rem;
 }
