@@ -34,7 +34,6 @@
 
         /* Header Styles */
         .site-header {
-          background-color: #b58a99;
           grid-column: 1 / -1;
           display: flex;
           justify-content: space-between;
@@ -56,7 +55,7 @@
         }
         
         .site-title {
-          color: #E77C08;
+          color: #110C0B;
           font-size: 2rem;
           font-weight: bold;
           margin: 0;
@@ -68,7 +67,7 @@
         }
         
         .nav-link {
-          color: #fff;
+          color: #110C0B;
           text-decoration: none;
           transition: color 0.3s ease;
         }
