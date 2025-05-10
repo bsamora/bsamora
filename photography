@@ -1,0 +1,20 @@
+---
+layout: default
+title: Photography
+---
+
+<div class="zine-page">
+  <div class="cutout-column">
+    {% assign letters = "P,H,O,T,O,G,R,A,P,H,Y" | split: "," %}
+    {% for letter in letters %}
+      <div class="cutout-letter">{{ letter }}</div>
+    {% endfor %}
+  </div>
+
+  <div class="gallery">
+    <img src="/images/photo1.jpg" alt="Photo 1">
+    <img src="/images/photo2.jpg" alt="Photo 2">
+    <img src="/images/photo3.jpg" alt="Photo 3">
+    <!-- Add more as needed -->
+  </div>
+</div>
