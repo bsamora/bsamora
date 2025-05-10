@@ -317,3 +317,44 @@
 .post-content {
   line-height: 1.6;
 }
+body {
+  background-color: #f7e381;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.zine-page {
+  display: flex;
+  padding: 40px;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.cutout-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px;
+}
+
+.cutout-letter {
+  font-size: 2rem;
+  background: black;
+  color: #f7e381;
+  padding: 10px;
+  margin: 4px;
+  font-family: 'Impact', 'Arial Black', sans-serif;
+  transform: rotate(-2deg);
+  text-align: center;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+  flex-grow: 1;
+}
+
+.gallery img {
+  width: 100%;
+  border: 5px solid #000;
+}
