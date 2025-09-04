@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gallery</title>
+  <meta name="description" content="A simple, responsive image gallery with a lightweight lightbox.">
+  <style>
+    :root {
+      /* Tweak these to match your site */
+      --bg: #0f0f10;
+      --surface: #16181c;
+      --text: #e9eef3;
+      --muted: #9aa4af;
+      --accent: #ef767a; /* pink */
+      --card-radius: 16px;
+      --maxw: 1100px;
+    }
+
+    html, body {
+      height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font: 16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    }
+
+    .page {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: clamp(16px, 3vw, 32px);
+    }
+
+    header.page-header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+      border-bottom: 1px solid #22262c;
+      padding-bottom: 1rem;
+    }
+
+    .title {
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+
+    .subtitle { color: var(--muted); font-size: 0.95rem; }
+
+    /* Gallery grid */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: clamp(10px, 1.6vw, 16px);
+    }
+
+    .card {
+      background: var(--surface);
+      border-radius: var(--card-radius);
+      overflow: hidden;
+      box-shadow: 0 1px 2px rgba(0,0,0,.35);
+      position: relative;
+      transition: transform .18s ease, box-shadow .18s ease;
+      isolation: isolate;
+    }
+
+    .card:has(img:hover) { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.35); }
+
+    .card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+      background: #0d0f12;
+    }
+
+    figure { margin: 0; }
+    figcaption {
+      padding: 10px 12px 12px;
+      font-size: 0.9rem;
+      color: var(--muted);
+      display: flex; align-items: center; gap: .5rem;
+    }
+
+    figcaption .dot { width: 6px; height: 6px; border-radius: 12px; background: var(--accent); box-shadow: 0 0 0 2px rgba(239,118,122,.25); }
+
+    /* Lightbox (dialog) */
+    dialog#lightbox {
+      border: none;
+      padding: 0;
+      background: transparent;
+      max-width: min(92vw, 1400px);
+      width: 100%;
+    }
+
+    dialog::backdrop { background: rgba(5,6,8,.7); }
+
+    .lightbox__inner {
+      position: relative;
+      background: #0b0d10;
+      border-radius: 18px;
+      overflow: clip;
+      box-shadow: 0 12px 40px rgba(0,0,0,.5);
+    }
+
+    .lightbox__img { width: 100%; max-height: 85vh; object-fit: contain; display: block; background: #0b0d10; }
+
+    .lightbox__bar {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: .75rem; padding: .6rem .8rem; border-top: 1px solid #161a20; color: var(--muted);
+    }
+
+    .lightbox__btn {
+      border: 0; background: #1a1f27; color: var(--text); cursor: pointer;
+      padding: .45rem .7rem; border-radius: 10px; font-size: .9rem;
+    }
+
+    .lightbox__btn:hover { background: #242a35; }
+
+    /* Utility */
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+    /* Optional: simple filter/search */
+    .toolbar { display:flex; gap:.5rem; align-items:center; margin-bottom: 1rem; }
+    .toolbar input[type="search"] { 
+      background:#0c0f13; border:1px solid #1b2027; border-radius:10px; color:var(--text);
+      padding:.6rem .75rem; width:min(420px, 80vw);
+    }
+    .toolbar .count { color: var(--muted); font-size: .9rem; }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="page-header">
+      <div>
+        <div class="title">Gallery</div>
+        <div class="subtitle">A responsive, lazy‑loaded grid with a click‑to‑zoom lightbox.</div>
+      </div>
+    </header>
+
+    <div class="toolbar">
+      <input id="search" type="search" placeholder="Filter by caption or tags…" aria-label="Filter images" />
+      <span class="count" id="count"></span>
+    </div>
+
+    <section class="gallery" id="gallery" aria-label="Image gallery">
+      <!-- Repeat .card for each image. Replace src with your files in /assets or /images -->
+
+      <figure class="card" data-tags="oslo travel ferry waterfront" data-caption="A ferry gliding across the Oslofjord at dusk">
+        <img src="images/sample-01.jpg" alt="Ferry on a calm fjord at sunset" loading="lazy" width="1600" height="1066" />
+        <figcaption><span class="dot" aria-hidden="true"></span><span>A ferry gliding across the Oslofjord at dusk</span></figcaption>
+      </figure>
+
+      <figure class="card" data-tags="stockholm museum vasa maritime" data-caption="Detail of the Vasa ship’s ornate stern">
+        <img src="images/sample-02.jpg" alt="Carved wooden sculptures on a ship" loading="lazy" width="1600" height="1066" />
+        <figcaption><span class="dot" aria-hidden="true"></span><span>Detail of the Vasa ship’s ornate stern</span></figcaption>
+      </figure>
+
+      <figure class="card" data-tags="copenhagen night neon" data-caption="Neon reflections in the rain, Vesterbro">
+        <img src="images/sample-03.jpg" alt="Neon lights reflecting on wet pavement" loading="lazy" width="1600" height="1066" />
+        <figcaption><span class="dot" aria-hidden="true"></span><span>Neon reflections in the rain, Vesterbro</span></figcaption>
+      </figure>
+
+      <!-- Add more cards as needed -->
+    </section>
+  </main>
+
+  <!-- Lightbox (one element reused for all images) -->
+  <dialog id="lightbox" aria-label="Image viewer">
+    <div class="lightbox__inner">
+      <img class="lightbox__img" alt="" />
+      <div class="lightbox__bar">
+        <div id="lightboxCaption">&nbsp;</div>
+        <div style="display:flex; gap:.5rem;">
+          <button class="lightbox__btn" id="prevBtn" aria-label="Previous image">◀</button>
+          <button class="lightbox__btn" id="nextBtn" aria-label="Next image">▶</button>
+          <button class="lightbox__btn" id="closeBtn">Close</button>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <script>
+    // --- Simple filter by caption/tags ---
+    const gallery = document.getElementById('gallery');
+    const search = document.getElementById('search');
+    const count = document.getElementById('count');
+
+    function updateCount() {
+      const visible = gallery.querySelectorAll('.card:not([hidden])').length;
+      const total = gallery.querySelectorAll('.card').length;
+      count.textContent = `${visible} / ${total}`;
+    }
+
+    search?.addEventListener('input', (e) => {
+      const q = e.target.value.trim().toLowerCase();
+      for (const card of gallery.querySelectorAll('.card')) {
+        const hay = `${card.dataset.caption || ''} ${card.dataset.tags || ''}`.toLowerCase();
+        card.hidden = q && !hay.includes(q);
+      }
+      updateCount();
+    });
+
+    // --- Lightbox logic using <dialog> ---
+    const dialog = document.getElementById('lightbox');
+    const dialogImg = dialog.querySelector('.lightbox__img');
+    const dialogCap = document.getElementById('lightboxCaption');
+
+    let currentIndex = -1;
+    const cards = [...gallery.querySelectorAll('.card')];
+
+    function openAt(index) {
+      currentIndex = ((index % cards.length) + cards.length) % cards.length; // wrap
+      const card = cards[currentIndex];
+      const img = card.querySelector('img');
+      dialogImg.src = img.currentSrc || img.src;
+      dialogImg.alt = img.alt || '';
+      dialogCap.textContent = card.dataset.caption || img.alt || '';
+      if (!dialog.open) dialog.showModal();
+    }
+
+    gallery.addEventListener('click', (e) => {
+      const card = e.target.closest('.card');
+      if (!card) return;
+      const index = cards.indexOf(card);
+      openAt(index);
+    });
+
+    document.getElementById('closeBtn').addEventListener('click', () => dialog.close());
+    dialog.addEventListener('click', (e) => { if (e.target === dialog) dialog.close(); });
+
+    document.getElementById('prevBtn').addEventListener('click', () => openAt(currentIndex - 1));
+    document.getElementById('nextBtn').addEventListener('click', () => openAt(currentIndex + 1));
+
+    // Keyboard navigation
+    dialog.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') openAt(currentIndex - 1);
+      if (e.key === 'ArrowRight') openAt(currentIndex + 1);
+      if (e.key === 'Escape') dialog.close();
+    });
+
+    // Initialize counter
+    updateCount();
+  </script>
+</body>
+</html>
