@@ -1,21 +1,23 @@
 ---
 layout: default
 ---
-<article class="post">
-  {% if page.cover_image %}
-  <div class="post-cover">
-    <img src="{{ page.cover_image }}" alt="{{ page.title }}">
-  </div>
-  {% endif %}
-  
-  <header class="post-header">
-    <h1>{{ page.title }}</h1>
-    <div class="post-meta">
-      <span class="post-date">{{ page.date | date: "%B %d, %Y" }}</span>
-    </div>
-  </header>
 
-  <div class="post-content">
-    {{ content }}
-  </div>
+<article class="post" style="max-width: 900px; margin: 6rem auto;">
+    <div class="hero" style="min-height: 30vh; margin-bottom: 3rem;">
+        <h1>{{ page.title }}</h1>
+        <div class="post-meta" style="margin-top: 2rem; font-size: 1rem;">
+            {{ page.date | date: "%B %d, %Y" }} 
+            {% if page.film_director %}— Directed by {{ page.film_director }}{% endif %}
+        </div>
+    </div>
+
+    <div style="font-size: 1.1rem; line-height: 1.8; font-family: 'Courier New', monospace;">
+        {{ content }}
+    </div>
+
+    <div class="divider"></div>
+
+    <div style="text-align: center;">
+        <a href="/blog.html" class="read-more">← Back to All Reviews</a>
+    </div>
 </article>
