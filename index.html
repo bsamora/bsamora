@@ -2,18 +2,76 @@
 layout: default
 title: Home
 ---
-<div class="container">
-    <div class="image-container">
-        <img src="images/J5.1.jpg" class="main-image" alt="Main image">
-    </div>
-    
-    <div class="details">
-        (eventual) home of a blog.
-    </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brandon Samora</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <a href="/" class="logo">BRANDON SAMORA</a>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="blog.html">Film Reviews</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
 
-    <div class="tech-notes">
-        Shot by: [moi]<br>
-        Film: [it was my cell phone]<br>
-        Location: [tokyo]
-    </div>
-</div>
+    <main>
+        <section class="hero halftone">
+            <h1>BRANDON<br>SAMORA</h1>
+            <p class="hero-subtitle">
+                Collages. Photography. Film criticism. 
+                An ongoing document of visual thought and cinematic reflection.
+            </p>
+        </section>
+
+        <div class="section-header">
+            <h2>Recent Work</h2>
+            <p>A selection of collages, photographs, and essays</p>
+        </div>
+
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="images/J5.1.jpg" alt="Tokyo photography">
+                <div class="gallery-caption">Tokyo, 2024</div>
+            </div>
+            <!-- More gallery items will populate here -->
+            <div class="gallery-item">
+                <img src="images/placeholder-1.jpg" alt="Collage work">
+                <div class="gallery-caption">Collage work</div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/placeholder-2.jpg" alt="Photography">
+                <div class="gallery-caption">Photography</div>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="section-header">
+            <h2>Latest Film Review</h2>
+        </div>
+
+        <div class="blog-posts">
+            <article class="post">
+                <h3 class="post-title">Latest Review Coming Soon</h3>
+                <div class="post-meta">Published Soon</div>
+                <p class="post-excerpt">
+                    Film reviews and critical essays exploring cinema's relationship with memory, 
+                    time, and visual language. Check back for the first entry.
+                </p>
+                <a href="blog.html" class="read-more">All Reviews</a>
+            </article>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2024 Brandon Samora — All rights reserved</p>
+    </footer>
+</body>
+</html>
