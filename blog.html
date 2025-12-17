@@ -1,18 +1,62 @@
----
-layout: default
-title: Blog
----
-<div class="blog-container">
-  <header class="blog-header">
-    <h1>Blog</h1>
-  </header>
-  
-  <ul class="blog-posts">
-    {% for post in site.posts %}
-      <li class="blog-post">
-        <a href="{{ post.url }}">{{ post.title }}</a>
-        <span class="blog-post-date">{{ post.date | date: "%B %d, %Y" }}</span>
-      </li>
-    {% endfor %}
-  </ul>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Film Reviews — Brandon Samora</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <a href="/" class="logo">BRANDON SAMORA</a>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="blog.html">Film Reviews</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="hero" style="min-height: 40vh;">
+            <h1>FILM<br>REVIEWS</h1>
+            <p class="hero-subtitle">
+                Critical essays on cinema. Exploring narrative structure, visual language, 
+                and the intersection of film with memory and time.
+            </p>
+        </div>
+
+        <div class="blog-posts">
+            <!-- Blog posts will be dynamically loaded from _posts folder -->
+            <!-- Each post should be a markdown file in _posts/ named: YYYY-MM-DD-title.md -->
+            
+            <!-- Example post structure (this will be replaced by Jekyll) -->
+            <article class="post">
+                <h3 class="post-title">Your First Review Title Here</h3>
+                <div class="post-meta">December 16, 2024</div>
+                <p class="post-excerpt">
+                    This is where your film review excerpt will appear. Write your reviews 
+                    as markdown files in the _posts folder with the format: 
+                    YYYY-MM-DD-title.md
+                </p>
+                <a href="#" class="read-more">Read Full Review</a>
+            </article>
+
+            <article class="post">
+                <h3 class="post-title">Second Review Example</h3>
+                <div class="post-meta">December 10, 2024</div>
+                <p class="post-excerpt">
+                    Each review can contain your thoughts on cinematography, narrative structure,
+                    performances, and thematic analysis. The Jekyll system will automatically 
+                    generate pages for each review.
+                </p>
+                <a href="#" class="read-more">Read Full Review</a>
+            </article>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2024 Brandon Samora — All rights reserved</p>
+    </footer>
+</body>
+</html>
