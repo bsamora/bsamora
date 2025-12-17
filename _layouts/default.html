@@ -1,25 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ page.title }}</title>
-    <link rel="stylesheet" href="/assets/styles.css">
+    <title>{{ page.title }} — Brandon Samora</title>
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    <header class="site-header">
-      <div class="header-container">
-        <h1 class="site-title">Brandon Samora</h1>
-            <nav class="site-nav">
-              <a href="/" class="nav-link">Home</a>
-              <a href="/blog" class="nav-link">Blog</a>
-            </nav>
-      </div>
-    </header>
+    <nav>
+        <a href="/" class="logo">BRANDON SAMORA</a>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/gallery.html">Gallery</a></li>
+            <li><a href="/blog.html">Film Reviews</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
     <main>
         {{ content }}
     </main>
+
     <footer>
+        <p>© 2024 Brandon Samora — All rights reserved</p>
     </footer>
 </body>
 </html>
