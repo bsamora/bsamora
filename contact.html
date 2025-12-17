@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact — Brandon Samora</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <a href="/" class="logo">BRANDON SAMORA</a>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="blog.html">Film Reviews</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="hero" style="min-height: 30vh;">
+            <h1>CONTACT</h1>
+        </div>
+
+        <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="_replyto" required>
+            </div>
+
+            <div class="form-group">
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" name="subject" required>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" required></textarea>
+            </div>
+
+            <button type="submit">Send Message</button>
+        </form>
+
+        <div style="margin-top: 4rem; padding: 2rem; border: 3px solid var(--black);">
+            <h3>Or reach me at:</h3>
+            <p style="margin-top: 1rem;">
+                <strong>Email:</strong> <a href="mailto:your.email@example.com">your.email@example.com</a>
+            </p>
+            <!-- Add your social links here if desired -->
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2024 Brandon Samora — All rights reserved</p>
+    </footer>
+</body>
+</html>
