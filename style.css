@@ -187,12 +187,11 @@ main {
   height: auto;
   object-fit: cover;
   display: block;
-  filter: grayscale(100%) contrast(1.2);
   transition: filter 0.3s;
 }
 
 .gallery-item:hover img {
-  filter: grayscale(0%) contrast(1);
+  filter: contrast(1.1);
 }
 
 .gallery-caption {
