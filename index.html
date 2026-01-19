@@ -1,93 +1,72 @@
+---
+layout: default
+title: Home
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brandon Samora</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background: #fafafa;
-            color: #0a0a0a;
-            font-family: 'Courier New', monospace;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            padding: 2rem;
-        }
-
-        .container {
-            max-width: 800px;
-            text-align: center;
-        }
-
-        h1 {
-            font-family: 'Impact', 'Arial Black', sans-serif;
-            font-size: clamp(4rem, 15vw, 10rem);
-            font-weight: 900;
-            letter-spacing: -0.03em;
-            line-height: 0.9;
-            text-transform: uppercase;
-            margin-bottom: 2rem;
-            border: 6px solid #0a0a0a;
-            padding: 2rem;
-            position: relative;
-        }
-
-        h1::after {
-            content: '';
-            position: absolute;
-            bottom: -12px;
-            right: -12px;
-            width: 100%;
-            height: 100%;
-            border: 6px solid #0a0a0a;
-            z-index: -1;
-        }
-
-        p {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            margin-bottom: 1rem;
-        }
-
-        .divider {
-            width: 60px;
-            height: 4px;
-            background: #0a0a0a;
-            margin: 3rem auto;
-        }
-
-        @media (max-width: 768px) {
-            h1 {
-                padding: 1.5rem;
-                border-width: 4px;
-            }
-
-            h1::after {
-                border-width: 4px;
-                bottom: -8px;
-                right: -8px;
-            }
-
-            p {
-                font-size: 1rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>BRANDON<br>SAMORA</h1>
+    <nav>
+        <a href="/" class="logo">BRANDON SAMORA</a>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="blog.html">Film Reviews</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="hero halftone">
+            <h1>BRANDON<br>SAMORA</h1>
+            <p class="hero-subtitle">
+                Collages, photos, words on films
+                and miscellaneous "other"
+            </p>
+        </section>
+
+        <div class="section-header">
+            <h2>Recent Work</h2>
+            <p>A selection of collages, photographs, and essays</p>
+        </div>
+
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="images/J5.1.jpg" alt="Tokyo photography">
+                <div class="gallery-caption">Tokyo, 2024</div>
+            </div>
+            <!-- More gallery items will populate here -->
+            <div class="gallery-item">
+                <img src="images/oh-dark-days.jpg" alt="Collage work">
+                <div class="gallery-caption">Collage work</div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/placeholder-2.jpg" alt="Photography">
+                <div class="gallery-caption">Photography</div>
+            </div>
+        </div>
+
         <div class="divider"></div>
-        <p>Site under construction.</p>
-        <p>Come back soon.</p>
-    </div>
+
+        <div class="section-header">
+            <h2>Latest Film Review</h2>
+        </div>
+
+        <div class="blog-posts">
+            <article class="post">
+                <h3 class="post-title">Latest Review Coming Soon</h3>
+                <div class="post-meta">Published Soon</div>
+                <p class="post-excerpt">
+                    We'll see if and when something pops up.
+                </p>
+                <a href="blog.html" class="read-more">All Reviews</a>
+            </article>
+        </div>
+    </main>
 </body>
 </html>
