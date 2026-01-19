@@ -5,6 +5,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Film Reviews — Brandon Samora</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        .review-item {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .review-item:last-child {
+            border-bottom: none;
+        }
+
+        .review-poster {
+            flex-shrink: 0;
+            width: 150px;
+        }
+
+        .review-poster img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .review-content {
+            flex: 1;
+        }
+
+        .review-title {
+            margin: 0 0 8px 0;
+            font-size: 24px;
+        }
+
+        .review-title a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        .review-title a:hover {
+            color: #000;
+        }
+
+        .review-rating {
+            color: #00c030;
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .review-meta {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        .review-text {
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .review-text p {
+            margin: 0 0 12px 0;
+        }
+
+        @media (max-width: 768px) {
+            .review-item {
+                flex-direction: column;
+            }
+
+            .review-poster {
+                width: 120px;
+            }
+        }
+    </style>
 </head>
 <body>
     <nav>
@@ -21,42 +101,133 @@
         <div class="hero" style="min-height: 40vh;">
             <h1>FILM<br>REVIEWS</h1>
             <p class="hero-subtitle">
-                Critical essays on cinema. Exploring narrative structure, visual language, 
+                Critical essays on cinema. Exploring narrative structure, visual language,
                 and the intersection of film with memory and time.
             </p>
         </div>
 
-        <div class="blog-posts">
-            <!-- Blog posts will be dynamically loaded from _posts folder -->
-            <!-- Each post should be a markdown file in _posts/ named: YYYY-MM-DD-title.md -->
-            
-            <!-- Example post structure (this will be replaced by Jekyll) -->
-            <article class="post">
-                <h3 class="post-title">Your First Review Title Here</h3>
-                <div class="post-meta">December 16, 2024</div>
-                <p class="post-excerpt">
-                    This is where your film review excerpt will appear. Write your reviews 
-                    as markdown files in the _posts folder with the format: 
-                    YYYY-MM-DD-title.md
-                </p>
-                <a href="#" class="read-more">Read Full Review</a>
-            </article>
-
-            <article class="post">
-                <h3 class="post-title">Second Review Example</h3>
-                <div class="post-meta">December 10, 2024</div>
-                <p class="post-excerpt">
-                    Each review can contain your thoughts on cinematography, narrative structure,
-                    performances, and thematic analysis. The Jekyll system will automatically 
-                    generate pages for each review.
-                </p>
-                <a href="#" class="read-more">Read Full Review</a>
-            </article>
+        <div class="blog-posts" id="reviews-container">
+            <div class="loading">Loading reviews from Letterboxd...</div>
         </div>
     </main>
 
     <footer>
         <p>© 2024 Brandon Samora — All rights reserved</p>
     </footer>
+
+    <script>
+        const LETTERBOXD_USERNAME = 'breid93';
+        const RSS_FEED_URL = `https://letterboxd.com/${LETTERBOXD_USERNAME}/rss/`;
+        const CORS_PROXY = 'https://api.allorigins.win/raw?url=';
+
+        async function fetchLetterboxdReviews() {
+            try {
+                const response = await fetch(CORS_PROXY + encodeURIComponent(RSS_FEED_URL));
+                const text = await response.text();
+                const parser = new DOMParser();
+                const xml = parser.parseFromString(text, 'text/xml');
+
+                const items = xml.querySelectorAll('item');
+                const reviews = [];
+
+                items.forEach(item => {
+                    // Extract basic info
+                    const title = item.querySelector('title')?.textContent || 'Untitled';
+                    const link = item.querySelector('link')?.textContent || '#';
+                    const pubDate = item.querySelector('pubDate')?.textContent || '';
+                    const description = item.querySelector('description')?.textContent || '';
+
+                    // Extract rating from title (format: "Film Name, Year - ★★★★½")
+                    const ratingMatch = title.match(/[★½]+$/);
+                    const rating = ratingMatch ? ratingMatch[0] : null;
+                    const cleanTitle = title.replace(/\s*-\s*[★½]+$/, '');
+
+                    // Extract poster image from description
+                    const imgMatch = description.match(/<img[^>]+src="([^">]+)"/);
+                    const posterUrl = imgMatch ? imgMatch[1] : null;
+
+                    // Extract review text (remove HTML tags and trim)
+                    let reviewText = description
+                        .replace(/<img[^>]*>/g, '')
+                        .replace(/<p[^>]*>/g, '')
+                        .replace(/<\/p>/g, '\n')
+                        .replace(/<br\s*\/?>/g, '\n')
+                        .replace(/<[^>]+>/g, '')
+                        .trim();
+
+                    // Format date
+                    const date = new Date(pubDate);
+                    const formattedDate = date.toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                    });
+
+                    reviews.push({
+                        title: cleanTitle,
+                        link,
+                        rating,
+                        posterUrl,
+                        reviewText,
+                        date: formattedDate
+                    });
+                });
+
+                return reviews;
+            } catch (error) {
+                console.error('Error fetching Letterboxd reviews:', error);
+                throw error;
+            }
+        }
+
+        function displayReviews(reviews) {
+            const container = document.getElementById('reviews-container');
+
+            if (reviews.length === 0) {
+                container.innerHTML = '<p class="loading">No reviews found.</p>';
+                return;
+            }
+
+            container.innerHTML = reviews.map(review => `
+                <article class="review-item">
+                    ${review.posterUrl ? `
+                        <div class="review-poster">
+                            <img src="${review.posterUrl}" alt="${review.title} poster">
+                        </div>
+                    ` : ''}
+                    <div class="review-content">
+                        <h3 class="review-title">
+                            <a href="${review.link}" target="_blank" rel="noopener">${review.title}</a>
+                        </h3>
+                        ${review.rating ? `<div class="review-rating">${review.rating}</div>` : ''}
+                        <div class="review-meta">Reviewed on ${review.date}</div>
+                        <div class="review-text">
+                            ${review.reviewText ? `<p>${review.reviewText.replace(/\n/g, '</p><p>')}</p>` : '<p><em>No review text available.</em></p>'}
+                        </div>
+                    </div>
+                </article>
+            `).join('');
+        }
+
+        function displayError() {
+            const container = document.getElementById('reviews-container');
+            container.innerHTML = `
+                <div class="loading">
+                    <p>Unable to load reviews from Letterboxd.</p>
+                    <p>Visit my Letterboxd profile: <a href="https://letterboxd.com/${LETTERBOXD_USERNAME}/" target="_blank">@${LETTERBOXD_USERNAME}</a></p>
+                </div>
+            `;
+        }
+
+        // Load reviews on page load
+        window.addEventListener('DOMContentLoaded', async () => {
+            try {
+                const reviews = await fetchLetterboxdReviews();
+                displayReviews(reviews);
+            } catch (error) {
+                displayError();
+            }
+        });
+    </script>
 </body>
 </html>
